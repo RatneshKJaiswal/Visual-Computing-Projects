@@ -5,9 +5,8 @@ import moviepy
 # from scipy.misc import imresize
 from moviepy.editor import VideoFileClip
 from tensorflow import keras
-model = keras.models.load_model(r'C:\Python\General_Python\LaneDetection\model.h5')
 
-
+model = keras.models.load_model('model.h5')
 
 class Lanes():
     def __init__(self):
@@ -41,15 +40,10 @@ def road_lines(image):
     return result
 
 
-
-
-vid_input = VideoFileClip(r'C:\Python\General_Python\LaneDetection\sample.mp4')
+vid_input = VideoFileClip("sample.mp4")
 vid_output = 'output.mp4'
+
 lanes = Lanes()
+
 vid_clip = vid_input.fl_image(road_lines)
 vid_clip.write_videofile(vid_output)
-
-
-
-
-
